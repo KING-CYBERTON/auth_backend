@@ -5,11 +5,12 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class GetAuth extends GetxController {
   static GetAuth instance = Get.find();
-
+  
+ 
   //late Rx<User?> _user;
   Rxn<User> fbUser = Rxn<User>();
   GoogleSignIn googleSignIn = GoogleSignIn();
-
+  final 
   FirebaseAuth auth = FirebaseAuth.instance;
   GoogleSignInAccount? _googleAcc;
 
