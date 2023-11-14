@@ -20,7 +20,7 @@ void main() async {
           storageBucket: "educative-9.appspot.com",
           messagingSenderId: "14205101883",
           appId: "1:14205101883:web:7c0db5d88bc2dc0310791e"),
-    ).then((value) => Get.put(GetAuth()));
+    ).then((value) => [Get.put(GetAuth())]);
     runApp(const MyApp());
   } else {
     await GoogleSignIn().signInSilently();
