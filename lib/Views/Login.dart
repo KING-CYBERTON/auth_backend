@@ -4,8 +4,6 @@ import 'package:auth_backend/Constraits/CustomText.dart';
 import 'package:get/get.dart';
 import 'package:auth_backend/controllers/AuthController.dart';
 
-// import 'package:panda_period/auth/GetAuth.dart';
-
 class LoginInPage extends StatefulWidget {
   const LoginInPage({super.key});
 
@@ -18,7 +16,6 @@ class _LoginInPageState extends State<LoginInPage> {
   var passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    //GetAuth controller = Get.put(GetAuth());
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: SafeArea(
@@ -39,7 +36,7 @@ class _LoginInPageState extends State<LoginInPage> {
                 )
               ],
               border: Border.all(
-                color: Color.fromARGB(255, 139, 51, 103),
+                color: const Color.fromARGB(255, 139, 51, 103),
                 width: 2,
               ),
               borderRadius: BorderRadius.circular(11),
@@ -87,10 +84,10 @@ class _LoginInPageState extends State<LoginInPage> {
                         passwordController.text.trim());
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.white10,
-                    shadowColor: Color.fromARGB(26, 81, 160, 180),
+                    backgroundColor: Colors.white10,
+                    shadowColor: const Color.fromARGB(26, 81, 160, 180),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Log In',
                     style: TextStyle(
                       fontSize: 18,
@@ -149,7 +146,7 @@ class _LoginInPageState extends State<LoginInPage> {
                             ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                                  GetAuth.instance.signInWithGoogle();
+                                GetAuth.instance.signInWithGoogle();
                               })
                       ],
                     )),
