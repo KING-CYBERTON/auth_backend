@@ -18,9 +18,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Tree Life'),
-        ),
+       
         body: SafeArea(
             child: Center(
           child: Container(
@@ -93,7 +91,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       'Sign Up',
                       style: TextStyle(
                         fontSize: 18,
-                        color: Color(0xffc519cb),
+                        color: Colors.red,
                       ),
                     )),
 
@@ -119,7 +117,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 )),
                 GestureDetector(
                   onTap: () {
-                    GetAuth.instance.signInWithGoogle();
+                
                   },
                   child: const CircleAvatar(
                     backgroundColor: Colors.white10,

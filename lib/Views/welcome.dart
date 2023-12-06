@@ -18,17 +18,6 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Tree Life'), actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.edit,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Get.toNamed('/');
-            },
-          ),
-        ]),
         body: Center(
             child: Container(
           width: 350,

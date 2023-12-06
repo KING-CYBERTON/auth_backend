@@ -21,9 +21,7 @@ class _LoginInPageState extends State<LoginInPage> {
     //GetAuth controller = Get.put(GetAuth());
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          title: const Text('Tree Life'),
-        ),
+       
         body: SafeArea(
             child: Center(
           child: Container(
@@ -97,7 +95,7 @@ class _LoginInPageState extends State<LoginInPage> {
                     'Log In',
                     style: TextStyle(
                       fontSize: 18,
-                      color: Color(0xffea1857),
+                      color:Colors.red,
                     ),
                   ),
                 ),
@@ -129,7 +127,7 @@ class _LoginInPageState extends State<LoginInPage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    GetAuth.instance.signInWithGoogle();
+                 
                   },
                   child: const CircleAvatar(
                     backgroundColor: Colors.white10,
@@ -154,8 +152,7 @@ class _LoginInPageState extends State<LoginInPage> {
                             ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                GetAuth.instance
-                                    .resetPassword(emailController.text.trim());
+                     
                               })
                       ],
                     )),
