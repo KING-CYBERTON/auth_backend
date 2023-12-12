@@ -5,13 +5,11 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class GetAuth extends GetxController {
   static GetAuth instance = Get.find();
-  
- 
+
   //late Rx<User?> _user;
   Rxn<User> fbUser = Rxn<User>();
   GoogleSignIn googleSignIn = GoogleSignIn();
-  final 
-  FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
   GoogleSignInAccount? _googleAcc;
 
   @override
@@ -69,47 +67,49 @@ class GetAuth extends GetxController {
         backgroundColor: Colors.red,
         snackPosition: SnackPosition.TOP,
         titleText: const Text(
-          "account Login failed",
+          "account Login failed ",
           style: TextStyle(color: Colors.white),
         ),
       );
     }
   }
 
-Future<void> signInWithGoogle() async {
-  try {
-    GoogleSignInAccount? googleUser = await googleSignIn.signInSilently(suppressErrors: false);
+  Future<void> signInWithGoogle() async {
+    try {
+      GoogleSignInAccount? googleUser =
+          await googleSignIn.signInSilently(suppressErrors: false);
 
-    if (googleUser == null) {
-      // If silent sign-in fails, try the regular sign-in flow
-      googleUser = await googleSignIn.signIn();
+      if (googleUser == null) {
+        // If silent sign-in fails, try the regular sign-in flow
+        googleUser = await googleSignIn.signIn();
+      }
+
+      if (googleUser == null) {
+        // User canceled the sign-in process or it failed
+        return;
+      }
+
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      final UserCredential userCredential =
+          await auth.signInWithCredential(credential);
+      final User? user = userCredential.user;
+
+      if (user != null) {
+        // Successful sign-in
+        print('Signed in with Google: ${user.displayName}');
+        // You can perform additional operations here, like storing user data, navigating to a new screen, etc.
+      }
+    } catch (e) {
+      print('Google sign-in error: $e');
+      // Handle sign-in error
     }
-
-    if (googleUser == null) {
-      // User canceled the sign-in process or it failed
-      return;
-    }
-
-    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-    final AuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-
-    final UserCredential userCredential = await auth.signInWithCredential(credential);
-    final User? user = userCredential.user;
-
-    if (user != null) {
-      // Successful sign-in
-      print('Signed in with Google: ${user.displayName}');
-      // You can perform additional operations here, like storing user data, navigating to a new screen, etc.
-    }
-  } catch (e) {
-    print('Google sign-in error: $e');
-    // Handle sign-in error
   }
-}
-
 
   void resetPassword(String email) async {
     try {

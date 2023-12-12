@@ -1,7 +1,7 @@
-import 'package:auth_backend/controllers/AuthController.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import '../controllers/AuthController.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});

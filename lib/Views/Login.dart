@@ -122,7 +122,9 @@ class _LoginInPageState extends State<LoginInPage> {
                   ],
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                   
+                  },
                   child: const CircleAvatar(
                     backgroundColor: Colors.white10,
                     radius: 30,
@@ -144,10 +146,7 @@ class _LoginInPageState extends State<LoginInPage> {
                               color: Colors.red,
                               fontWeight: FontWeight.bold,
                             ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                GetAuth.instance.signInWithGoogle();
-                              })
+                            recognizer: TapGestureRecognizer()..onTap = () {})
                       ],
                     )),
                   ],
